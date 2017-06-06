@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tedu.mapper.HouseMapper">
+    
+    <select id="findAll" resultType="House">
+        select * from house_p
+    </select>
+
+    <select id="findListByAdd" resultType="House">
+        select * from house_p where city = #{address}
+    </select>
+
+    <insert id="saveHouse">
+        insert into house_p(house_id,user_id,city,type,area,live_num,room_num,money,ask,address,tel,device) values(
+			#{houseId},
+			#{userId},
+			#{city},
+			#{type},
+			#{area},
+			#{liveNum},
+			#{roomNum},
+			#{money},
+			#{ask},
+			#{address},
+			#{tel},
+			#{device}
+		)
+    </insert>
+
+<!--    <update id="updateHouse">
+        update house_p set parent_id =#{parentDept.deptId},
+		house_id = #{houseId},
+		user_id = #{userId},
+		city = #{city}
+		where dept_id = #{houseId}
+    </update>-->
+
+    <select id="findOne" resultType="House" >
+		select * from house_p where house_id = #{houseId}
+    </select>
+
+    <select id="findListByUserId" resultType="House">
+        select * from house_p where user_id = #{userId}
+    </select>
+
+
+
+<!--    <select id="findByUsernameAndPassword" resultType="User">
+        select * from user WHERE username=#{0} AND password=#{1}
+    </select>
+
+    <insert id="addUser">
+    	insert into user(username,password) values(#{username},#{password})
+    </insert>
+    
+    <select id="findUserById" resultType="User">
+    	select * from user where id=#{id}
+    </select>
+    
+    <update id="updateUser">
+    	update user set name=#{name},age=#{age},sex=#{sex} where id=#{id}
+    </update>
+    
+    <delete id="deleteUser">
+    	delete from user where id=#{id}
+    </delete>-->
+</mapper>

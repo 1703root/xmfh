@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tedu.mapper.OrderMapper">
+    <select id="findOrderByUserId" resultType="Order">
+        select * from order_p where user_id=#{userId}
+    </select>
+
+    <update id="updateOrderState">
+        update order_p set paystate =#{paystate} where order_id=#{orderId}
+    </update>
+
+    <delete id="deleteOrder">
+        DELETE from order_p where order_id=#{orderId}
+    </delete>
+
+    <insert id="saveOrder">
+        insert into order_p(order_id,user_id,house_id,paystate,create_time) values(
+        #{orderId},
+        #{userId},
+        #{houseId},
+        #{paystate},
+        #{createTime}
+        )
+    </insert>
+
+
+
+</mapper>
